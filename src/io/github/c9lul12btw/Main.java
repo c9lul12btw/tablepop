@@ -5,29 +5,33 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
-    private static int MINIMUM_STOC = 500;
-    private static int MAXIMUM_STOC = 2000;
-
-    private static int MINIMUM_PLOTS = 6;
-    private static int MAXIMUM_PLOTS = 15;
-
-    private static int MINIMUM_SCORE = 5;
-    private static int MAXIMUM_SCORE = 10;
-
     private static double[][] seed;
 
     public static void main(String[] args) {
+
+
+    }
+
+    public static void basicRating() {
 
         System.out.format("\n%-10s%-10s%-10s%-10s%-10s","Rating","Total","Number","Score","STOC");
         System.out.format("\n%-10s%-10s%-10s%-10s%-10s\n\n","","STOC","of Plots","per Plot","per Plot");
         seed = new double[50][50];
 
         for (int i = 0; i < 50; i++) {
-            int RANDOM_STOC = ThreadLocalRandom.current().nextInt(MINIMUM_STOC, MAXIMUM_STOC + 1);
+
+            int MINIMUM_STOC = 500;
+            int MAXIMUM_STOC = 2000;
+            int MAXIMUM_PLOTS = 15;
+            int MINIMUM_PLOTS = 6;
+            int MAXIMUM_SCORE = 10;
+            int MINIMUM_SCORE = 5;
+
+            double RANDOM_STOC = ThreadLocalRandom.current().nextDouble(MINIMUM_STOC, MAXIMUM_STOC + 1);
             int RANDOM_PLOTS = ThreadLocalRandom.current().nextInt(MINIMUM_PLOTS, MAXIMUM_PLOTS + 1);
             double RANDOM_SCORE = ThreadLocalRandom.current().nextInt(MINIMUM_SCORE, MAXIMUM_SCORE + 1);
 
-            int STOC_PER_PLOT = RANDOM_STOC / RANDOM_PLOTS;
+            double STOC_PER_PLOT = RANDOM_STOC / RANDOM_PLOTS;
             double RATING = (RANDOM_STOC * STOC_PER_PLOT) * (RANDOM_SCORE / 1000);
 
             double[] player = new double[]{RATING, RANDOM_STOC, RANDOM_PLOTS, RANDOM_SCORE, STOC_PER_PLOT};
